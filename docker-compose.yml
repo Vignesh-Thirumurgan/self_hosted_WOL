@@ -1,20 +1,20 @@
 version: '3.8'
 services:
-    web:
-      image: wakeonlan
-      ports:
-        - "5000:5000"
-      environment:
-         DB_HOST: db
-         DB_USER: WAKE
-         DB_PASSWORD: WAKE
-         DB_NAME: WAKE
-      depends_on:
-        -  db
+  web:
+    image: wakeonlan
+    ports:
+      - "5000:5000"
+    environment:
+      DB_HOST: db
+      DB_USER: WAKE
+      DB_PASSWORD: WAKE
+      DB_NAME: WAKE
+    depends_on:
+      - db
 
-    db:
-     image: mysql:8.0
-     restart: always
+  db:
+    image: mysql:8.0
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: WAKE
       MYSQL_USER: WAKE
@@ -24,4 +24,3 @@ services:
       - "3306:3306"
     volumes:
       - /mnt/docker:/var/lib/mysql
-  
