@@ -11,6 +11,8 @@ services:
       DB_NAME: WAKE
     depends_on:
       - db
+    networks:
+      - my_network
 
   db:
     image: mysql:8.0
@@ -24,3 +26,9 @@ services:
       - "3306:3306"
     volumes:
       - /mnt/docker:/var/lib/mysql
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
