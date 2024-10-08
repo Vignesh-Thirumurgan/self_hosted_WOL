@@ -1,9 +1,10 @@
 FROM python:3.9-slim
 
-# Install dependencies for MySQL client
+# Install dependencies for MySQL client and build tools
 RUN apt-get update && apt-get install -y \
     pkg-config \
     default-libmysqlclient-dev \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
