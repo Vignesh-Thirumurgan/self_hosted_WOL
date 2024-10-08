@@ -18,6 +18,36 @@ app.config['MYSQL_CURSORCLASS']= 'DictCursor'
 
 mysql = MySQL(app)
 
+
+def create_tables():
+    cur = mysql.connection.cursor()
+    # Create mac table
+    cur.execute('''
+        CREATE TABLE IF NOT EXISTS mac (
+            id INT NOT NULL AUTO_INCREMENT,
+            tag VARCHAR(45) NOT NULL,
+            sys_name VARCHAR(45) NOT NULL,
+            mac VARCHAR(45) NOT NULL,
+            PRIMARY KEY (id)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+    ''')
+    
+    # Create users table
+    cur.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INT NOT NULL AUTO_INCREMENT,
+            username VARCHAR(45) NOT NULL,
+            password VARCHAR(45) NOT NULL,
+            PRIMARY KEY (id),
+            UNIQUE KEY (username)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+    ''')
+    
+    mysql.connection.commit()
+    cur.close()
+
+
+
 def user_exists():
     cur = mysql.connection.cursor()
     cur.execute("SELECT COUNT(*) as count FROM users")
@@ -168,4 +198,6 @@ def delete(id):
 
 
 if __name__ == '__main__': 
+    with app.app_context():  # Ensure we are in the Flask app context
+        create_tables()
     app.run(host='0.0.0.0') 
