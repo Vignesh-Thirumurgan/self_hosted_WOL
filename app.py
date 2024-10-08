@@ -11,8 +11,8 @@ app.secret_key = 'your_secret_key'  # Set your secret key for session management
 
 # MySQL configurations  
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'VIGNESH'
-app.config['MYSQL_PASSWORD'] = 'Vignesh@477'
+app.config['MYSQL_USER'] = 'WAKE'
+app.config['MYSQL_PASSWORD'] = 'WAKE'
 app.config['MYSQL_DB'] = 'WAKE'
 app.config['MYSQL_CURSORCLASS']= 'DictCursor'
 
