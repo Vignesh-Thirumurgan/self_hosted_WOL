@@ -4,6 +4,11 @@ WORKDIR /app
 
 COPY requirements.txt .
 
+RUN apt-get update && apt-get install -y \
+    pkg-config \
+    libmysqlclient-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 
 RUN pip install --upgrade pip
 
