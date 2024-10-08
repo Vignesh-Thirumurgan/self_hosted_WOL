@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Record</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='table.css') }}">
+</head>
+<body>
+    <h1>Edit Record</h1>
+    <form method="post" action="{{ url_for('update', id=mac.id) }}">
+        <label for="sys_name">System Name:</label>
+        <input type="text" id="sys_name" name="sys_name" value="{{ mac.sys_name }}"><br>
+        <label for="mac">MAC Address:</label>
+        <input type="text" id="mac" name="mac" value="{{ mac.mac }}"><br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

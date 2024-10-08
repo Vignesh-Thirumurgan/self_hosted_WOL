@@ -1,0 +1,46 @@
+.outter > table{
+    display: table;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+body{
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+  }
+
+  th{
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    font-size: bold;
+}
+td{
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+}
+
+tr:hover{
+    background-color: #212121;
+}
+
+.outter{
+    margin-top: 20px;
+}
+
+.button{
+    margin-top: 40px;
+    text-align: center;
+       
+}
+
+.button > button {
+    padding: 10px;
+    background: linear-gradient(to top, #0fd850 0%, #f9f047 100%);
+    border-radius: 10px;
+    width: 100px; 
+    border: none;
+}

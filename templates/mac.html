@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='mac.css') }}">
+</head>
+<body>
+    <div class="outter">
+        <div class="inner">
+                <header>
+                    <h1>Wake ON lan</h1>
+                    <p>{{ response }}</p>               
+                </header>
+            
+                <main>
+                  <form action="/mac" method="post">
+                    <div class="form-group">
+                        <label for="Name">Sys Name</label>
+                        <input type="text" name="name" placeholder="enter system name"  id="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Name">MAC-Address</label>
+                        <input type="mac" name="mac" placeholder="enter mac address"  id="mac">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Name">Tag</label>
+                        <input type="password" name="password" placeholder="enter tag"  id="password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <button>submit</button>
+                    </div>
+
+                </form>
+
+                </main>
+
+            <footer>
+                <p>don't have an account</p>
+                
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
