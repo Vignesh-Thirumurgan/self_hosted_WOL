@@ -1,0 +1,3 @@
+Flask
+wakeonlan
+Flask-MySQLdb
