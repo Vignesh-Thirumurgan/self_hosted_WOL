@@ -13,6 +13,6 @@ jobs:
     steps:
       - name: docker build image
         run: |
-          cd self_hosted_WOL
+          cd /home/wizard/self_hosted_WOL
           docker build -t wakeonlan .
           docker compose up -d      
