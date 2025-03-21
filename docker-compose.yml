@@ -11,7 +11,7 @@ services:
       DB_NAME: WAKE
     depends_on:
       - db
-    command: sh -c "sleep 60 && python app.py"
+    command: sh -c "sleep 90 && python app.py"
     networks:
       - wake
 
