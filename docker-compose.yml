@@ -32,3 +32,4 @@ services:
 
 networks:
   wake:
+    driver: host
