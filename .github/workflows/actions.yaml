@@ -13,4 +13,5 @@ jobs:
       - name: stop container
         run: |
           cd /home/wizard/self_hosted_WOL
+          docker build -t wakeonlan .
           docker-compose up -d
