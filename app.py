@@ -10,11 +10,11 @@ app = Flask(__name__, template_folder='templates', static_url_path='/')
 app.secret_key = 'your_secret_key'  # Set your secret key for session management
 
 # MySQL configurations  
-app.config['MYSQL_HOST'] = 'db'
+app.config['MYSQL_HOST'] = '10.18.10.122'
 app.config['MYSQL_USER'] = 'WAKE'
 app.config['MYSQL_PASSWORD'] = 'WAKE'
 app.config['MYSQL_DB'] = 'WAKE'
-app.config['MYSQL_CURSORCLASS']= 'DictCursor'
+app.config['MYSQL_CURSORCLASS']= 'DictCursor'   
 
 mysql = MySQL(app)
 
@@ -63,6 +63,10 @@ def login_required(f):
         return f(*args,**kwargs)
     return inner
 
+@app.route("/logout")
+def logout():
+    session.pop('user',None)
+    return redirect(url_for('login'))
 
 
 
@@ -124,6 +128,59 @@ def mac():
               return render_template('mac.html',response="error")
           
     return render_template('mac.html')
+
+@app.route('/users')
+def users():
+    con=mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    con.execute("SELECT * FROM users")
+    users=con.fetchall()
+    return render_template('users.html',users=users)
+
+@app.route('/up_us/<int:id>', methods=['GET', 'POST'])
+def up_us(id):
+    con = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        con.execute("UPDATE users SET username = %s, password = %s WHERE id = %s", (username, password, id))
+        mysql.connection.commit()
+        con.close()
+        return redirect(url_for('users'))
+    
+    elif request.method == 'GET':
+        con.execute("SELECT * FROM users WHERE id = %s", (id,))
+        users = con.fetchone()
+        con.close()
+        
+        if users:
+            return render_template('in_us.html', users=users)
+        else:
+            return "Record not found", 404
+
+
+@app.route('/add_users',methods=['GET','POST'])
+@login_required
+def add_users():
+    if request.method=='POST':
+        username=request.form['username']
+        password=request.form['password']
+
+        con=mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        con.execute("INSERT users (username,password) VALUES (%s,%s)",(username,password))
+        mysql.connection.commit()
+        con.close()
+        return redirect('/users')
+
+    return render_template('add_user.html') 
+
+@app.route('/del_user/<string:id>')
+@login_required
+def del_user(id):
+    con = mysql.connection.cursor()
+    con.execute("DELETE FROM users WHERE id = %s", (id,))
+    mysql.connection.commit()
+    con.close()
+    return redirect(url_for('users')) 
 
 
 @app.route('/insert',methods=['GET','POST'])

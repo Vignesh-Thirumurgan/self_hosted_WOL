@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>\
+    <title>WAKEONLAN</title>\
     <link rel="stylesheet" href="{{ url_for('static', filename='table.css') }}">
 </head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +41,12 @@
         <div class="button">
             <button>
                 <a href="{{ url_for('insert')}}" style="text-decoration: none; color: white;">Insert</a>
+            </button>
+            <button>
+                <a href="{{ url_for('logout') }}" style="text-decoration: none; color: white;">Logout</a>
+            </button>
+            <button>
+                <a href="{{ url_for('users') }}" style="text-decoration: none; color: white;">Users</a>
             </button>
         </div>
     </div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAKEONLAN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='insert.css') }}">
+</head>
+<body>
+    <div class="outter">
+        <div class="inner">
+                <header>
+                    <h1>WAKE ON LAN</h1>
+                    <p>{{ suc }}</p>               
+                </header>
+            
+                <main>
+                  <form action="{{ url_for('up_us',id=users.id) }}" method="post">
+                    <div class="form-group">
+                        <label for="Name">USERNAME</label>
+                        <input type="text" name="username" placeholder="enter system name" id="system" value="{{ users.username }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Name">PASSWORD</label>
+                        <input type="text" name="password" placeholder="enter mac address" id="mac" value="{{ users.password }}">
+                    </div>
+
+                
+                    <div class="form-group">
+                        <button>submit</button>
+                    </div>
+
+                </form>
+
+                </main>
+
+            <footer>
+                <!-- <p>don't have an account</p> -->
+                
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

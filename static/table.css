@@ -34,7 +34,7 @@ tr:hover{
 .button{
     margin-top: 40px;
     text-align: center;
-       
+    color: white;   
 }
 
 .button > button {
@@ -43,4 +43,7 @@ tr:hover{
     border-radius: 10px;
     width: 100px; 
     border: none;
+    color: white;
+    text-decoration: none;
+
 }
