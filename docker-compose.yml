@@ -1,7 +1,6 @@
 version: '3.8'
 services:
   web:
-    container_name: wakeonlan
     image: wakeonlan
     ports:
       - "5000:5000"
