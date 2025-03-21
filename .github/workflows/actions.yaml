@@ -1,0 +1,17 @@
+name: cicd
+
+on:
+ push:
+   branches:
+     - develope3
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: stop container
+        run: |
+          cd /home/wizard/self_hosted_WOL
+          docker buid -t wakeonlan:latest .
+          docker-compose up -d
