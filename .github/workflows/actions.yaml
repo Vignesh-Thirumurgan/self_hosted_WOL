@@ -1,2 +1,30 @@
-name: cicd
+name: Docker CI/CD
 
+on:
+  push:
+     branches:
+       - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+
+    steps:
+      - name: prune the image if exist
+        run: docker rmi wakeonlan
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: docker build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: /home/wizard/self_hosted_WOL/Dockerfile
+          push: false
+          tags: wakeonlan:latest
+
+      - name: running docker-compose
+        run: docker-compose -f /home/wizard/self_hosted_WOL/docker-compose.yaml up -d
+        
