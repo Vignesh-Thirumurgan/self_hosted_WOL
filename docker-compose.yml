@@ -2,35 +2,28 @@ version: '3.8'
 services:
   web:
     image: wakeonlan
+    network_mode: "host"
     container_name: wakeonlan
-    ports:
-      - "5000:5000"
     environment:
-      DB_HOST: 
+      DB_HOST: 127.0.0.1 
       DB_USER: WAKE
       DB_PASSWORD: WAKE
       DB_NAME: WAKE
     depends_on:
       - db
-    command: sh -c "sleep 240 && python app.py"
-    networks:
-      - wake
+    command: sh -c "sleep 50 && python app.py"
+    
 
   db:
     image: mysql:8.0
+    network_mode: "host"
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: WAKE
       MYSQL_USER: WAKE
       MYSQL_PASSWORD: WAKE
       MYSQL_DATABASE: WAKE
-    ports:
-      - "3306:3306"
     volumes:
       - /mnt/docker:/var/lib/mysql
-    networks:
-      - wake
 
-networks:
-  wake:
-    driver: bridge
+

@@ -10,7 +10,8 @@ app = Flask(__name__, template_folder='templates', static_url_path='/')
 app.secret_key = 'your_secret_key'  # Set your secret key for session management
 
 # MySQL configurations  
-app.config['MYSQL_HOST'] = 'db'
+app.config['MYSQL_HOST'] = '127.0.0.1'
+app.config['MYSQL_PORT'] = 3306
 app.config['MYSQL_USER'] = 'WAKE'
 app.config['MYSQL_PASSWORD'] = 'WAKE'
 app.config['MYSQL_DB'] = 'WAKE'
@@ -257,4 +258,4 @@ def delete(id):
 if __name__ == '__main__': 
     with app.app_context():  # Ensure we are in the Flask app context
         create_tables()
-    app.run(host='0.0.0.0') 
+    app.run(host='0.0.0.0', port=5000) 
