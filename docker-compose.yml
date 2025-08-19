@@ -3,6 +3,8 @@ services:
   web:
     image: wakeonlan
     container_name: wakeonlan
+    ports:
+      - "5000:5000"
     environment:
       DB_HOST: 
       DB_USER: WAKE
@@ -10,7 +12,7 @@ services:
       DB_NAME: WAKE
     depends_on:
       - db
-    command: sh -c "sleep 120 && python app.py"
+    command: sh -c "sleep 240 && python app.py"
     networks:
       - wake
 
@@ -26,10 +28,9 @@ services:
       - "3306:3306"
     volumes:
       - /mnt/docker:/var/lib/mysql
-    network_mode: bridge 
+    networks:
+      - wake
 
 networks:
   wake:
-    driver: macvlan
-    driver_opts:
-      
+    driver: bridge

@@ -17,12 +17,12 @@
                 <main>
                   <form action="{{ url_for('update', id=mac.id) }}" method="post">
                     <div class="form-group">
-                        <label for="Name">MAC Address</label>
+                        <label for="Name">Sys Name</label>
                         <input type="text" name="system" placeholder="enter system name" value="{{ mac.sys_name }}" id="system">
                     </div>
 
                     <div class="form-group">
-                        <label for="Name">Sys Name</label>
+                        <label for="Name">MAC-Address</label>
                         <input type="mac" name="mac" placeholder="enter mac address" id="mac" value="{{ mac.mac }}">
                     </div>
 

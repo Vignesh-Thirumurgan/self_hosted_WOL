@@ -10,7 +10,7 @@ app = Flask(__name__, template_folder='templates', static_url_path='/')
 app.secret_key = 'your_secret_key'  # Set your secret key for session management
 
 # MySQL configurations  
-app.config['MYSQL_HOST'] = '10.18.10.45'
+app.config['MYSQL_HOST'] = 'db'
 app.config['MYSQL_USER'] = 'WAKE'
 app.config['MYSQL_PASSWORD'] = 'WAKE'
 app.config['MYSQL_DB'] = 'WAKE'
