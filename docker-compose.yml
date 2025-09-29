@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   web:
-    image: wakeonlan
+    image: craze477/wakeonlan
     network_mode: "host"
     container_name: wakeonlan
     environment:
